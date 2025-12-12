@@ -16,7 +16,7 @@ This project implements a fake news detection system leveraging quantum machine 
 
 
 Fake-news-detection-QML/
-├── Quantum_project.ipynb    # Main implementation notebook
+├── fnd_qml.ipynb    # Main implementation notebook
 └── README.md                 # Project documentation
 
 
@@ -31,7 +31,7 @@ Fake-news-detection-QML/
 
 bash
 # Clone the repository
-git clone https://github.com/pavan-charan/Fake-news-detection-QML.git
+git clone 
 
 # Navigate to the project directory
 cd Fake-news-detection-QML
@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 1. Open the Jupyter Notebook:
    bash
-   jupyter notebook Quantum_project.ipynb
+   jupyter notebook fnd_qml.ipynb
    
 
 2. Follow the steps in the notebook to:
