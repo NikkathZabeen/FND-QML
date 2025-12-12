@@ -31,7 +31,7 @@ Fake-news-detection-QML/
 
 bash
 # Clone the repository
-git clone 
+git clone https://github.com/NikkathZabeen/FND-QML.git
 
 # Navigate to the project directory
 cd Fake-news-detection-QML
