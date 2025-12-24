@@ -1,81 +1,55 @@
-# Fake-news-detection-QML
+# Fake News Detection using Classical and Quantum Machine Learning
 
-A Quantum Machine Learning (QML) approach to detecting fake news using quantum computing techniques.
+This project implements a fake news detection system, specifically focusing on COVID-19 related content. It leverages both classical machine learning (SVM) and provides a foundation for Quantum Machine Learning (QML) approaches using PennyLane.
 
 ## Overview
 
-This project implements a fake news detection system leveraging quantum machine learning algorithms. By utilizing the principles of quantum computing, this approach aims to enhance the accuracy and efficiency of identifying misinformation in news articles.
+The goal of this project is to distinguish between real and fake news articles/tweets. The current implementation uses the "Constraint" dataset, processes the text data, and trains Support Vector Machine (SVM) models. It also sets up the environment for Quantum Machine Learning experiments.
 
-## Features
+## Dataset
 
-- *Quantum Machine Learning*: Utilizes quantum algorithms for classification tasks
-- *Fake News Detection*: Analyzes text data to distinguish between real and fake news
-- *Jupyter Notebook Implementation*: Interactive notebook for experimentation and visualization
+The project uses the **Constraint@AAAI2021 COVID-19 Fake News Detection Dataset**.
+The notebook expects the following files to be located in your Google Drive at `/content/drive/MyDrive/CovidDataset/`:
 
-## Repository Structure
+-   `Constraint_English_Train.xlsx`
+-   `Constraint_English_Val.xlsx`
+-   `english_test_with_labels.xlsx`
 
+## Dependencies
 
-Fake-news-detection-QML/
-├── fnd_qml.ipynb    # Main implementation notebook
-└── README.md                 # Project documentation
+The project relies on the following Python packages:
 
+-   **Quantum Computing:** `pennylane`, `pennylane-lightning`
+-   **Machine Learning:** `scikit-learn`
+-   **Data Processing:** `pandas`, `numpy`, `openpyxl`
+-   **Visualization:** `seaborn`, `matplotlib`
 
-## Requirements
+## Project Workflow
 
-- Python 3.x
-- Jupyter Notebook
-- Quantum computing libraries (e.g., Qiskit, PennyLane)
-- Machine learning libraries (e.g., scikit-learn, numpy, pandas)
+The `fnd_qml.ipynb` notebook performs the following steps:
 
-## Installation
-
-bash
-# Clone the repository
-git clone https://github.com/NikkathZabeen/FND-QML.git
-
-# Navigate to the project directory
-cd Fake-news-detection-QML
-
-# Install required dependencies
-pip install -r requirements.txt
-
+1.  **Environment Setup:** Mounts Google Drive to access the dataset and installs necessary libraries.
+2.  **Data Loading & Preprocessing:**
+    -   Loads training, validation, and test datasets.
+    -   Cleans text (lowercase, removes URLs, mentions, special characters).
+    -   Encodes labels (Real/Fake) to numerical values.
+3.  **Feature Extraction:**
+    -   Uses **TF-IDF (Term Frequency-Inverse Document Frequency)** vectorization.
+    -   Configuration: N-grams (1,2), Max features: 5000.
+4.  **Model Training & Evaluation:**
+    -   **Linear SVC:** Trains a Linear Support Vector Classifier and evaluates it on validation and test sets.
+    -   **RBF SVM:** Trains a Support Vector Machine with a Radial Basis Function (RBF) kernel on the full feature set.
+5.  **Quantum Machine Learning (In Progress):**
+    -   The environment is set up with PennyLane (`import pennylane as qml`) to implement Quantum Kernels or Quantum Neural Networks for classification.
 
 ## Usage
 
-1. Open the Jupyter Notebook:
-   bash
-   jupyter notebook fnd_qml.ipynb
-   
+1.  **Upload Dataset:** Ensure the dataset files are uploaded to your Google Drive in the folder `CovidDataset`.
+2.  **Open in Colab:** Upload `fnd_qml.ipynb` to Google Colab.
+3.  **Run Cells:** Execute the cells sequentially.
+    -   You will be asked to authenticate and mount your Google Drive.
+    -   The notebook will install dependencies, process the data, and train the models.
 
-2. Follow the steps in the notebook to:
-   - Load and preprocess the dataset
-   - Train the quantum machine learning model
-   - Evaluate the model's performance
-   - Make predictions on new data
+## Results
 
-## Methodology
-
-The project implements quantum machine learning techniques for binary classification of news articles.  The approach typically involves:
-
-1. *Data Preprocessing*: Text vectorization and feature extraction
-2. *Quantum Circuit Design*: Creating quantum circuits for classification
-3. *Training*:  Optimizing quantum circuit parameters
-4. *Evaluation*:  Testing the model on validation data
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is open source and available under the MIT License. 
-
-## Contact
-
-For questions or suggestions, please open an issue in this repository. 
-
-## Acknowledgments
-
-- Quantum computing frameworks and libraries
-- Open-source fake news datasets
-- Research community in quantum machine learning
+The notebook outputs classification reports (Precision, Recall, F1-Score) and confusion matrices for both validation and test sets to evaluate the performance of the models.
